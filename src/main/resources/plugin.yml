@@ -105,6 +105,8 @@ permissions:
       description: A permission in Necessities!
     Necessities.night:
       description: A permission in Necessities!
+    Necessities.time:
+      description: A permission in Necessities!
     Necessities.vanish:
       description: A permission in Necessities!
     Necessities.vanish.see:
@@ -126,4 +128,6 @@ permissions:
     Necessities.setspawn:
       description: A permission in Necessities!
     Necessities.spawn:
+      description: A permission in Necessities!
+    Necessities.back:
       description: A permission in Necessities!

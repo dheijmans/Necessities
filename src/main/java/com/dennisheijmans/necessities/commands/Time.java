@@ -19,17 +19,23 @@ public class Time implements CommandExecutor {
         Player player = (Player) sender;
         World world = player.getWorld();
         if (command.getName().equalsIgnoreCase("day")) {
-            world.setTime(1000);
-            Message.setTime(player, "day");
+            if(player.hasPermission("Necessities.day") || player.hasPermission("Necessities.*")) {
+                world.setTime(1000);
+                Message.setTime(player, "day");
+            }
         } else if (command.getName().equalsIgnoreCase("night")) {
-            world.setTime(13000);
-            Message.setTime(player, "night");
+            if(player.hasPermission("Necessities.night") || player.hasPermission("Necessities.*")) {
+                world.setTime(13000);
+                Message.setTime(player, "night");
+            }
         } else if (command.getName().equalsIgnoreCase("time")) {
-            if (args.length == 1 && Tool.isLong(args[0])) {
-                world.setTime(Long.parseLong(args[0]));
-                Message.setTime(player, args[0]);
-            } else {
-                Message.invalidArguments(player);
+            if(player.hasPermission("Necessities.time") || player.hasPermission("Necessities.*")) {
+                if (args.length == 1 && Tool.isLong(args[0])) {
+                    world.setTime(Long.parseLong(args[0]));
+                    Message.setTime(player, args[0]);
+                } else {
+                    Message.invalidArguments(player);
+                }
             }
         }
         return true;

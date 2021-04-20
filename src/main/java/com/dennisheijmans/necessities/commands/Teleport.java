@@ -24,12 +24,14 @@ public class Teleport implements CommandExecutor {
         }
         Player player = (Player) sender;
         if (command.getName().equalsIgnoreCase("back")) {
-            Location placeOfDeath = plugin.onPlayerDeathEvent.deathLocations.get(player.getName());
-            if (placeOfDeath != null) {
-                player.teleport(placeOfDeath);
-                Message.teleport(player, "place of death");
-            } else {
-                Message.hasNo(player, "place of death");
+            if(player.hasPermission("Necessities.back") || player.hasPermission("Necessities.*")) {
+                Location placeOfDeath = plugin.onPlayerDeathEvent.deathLocations.get(player.getName());
+                if (placeOfDeath != null) {
+                    player.teleport(placeOfDeath);
+                    Message.teleport(player, "place of death");
+                } else {
+                    Message.hasNo(player, "place of death");
+                }
             }
         }
         return true;
