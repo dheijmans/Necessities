@@ -1,4 +1,4 @@
-package me.Tjeerd.MiniEssentials.commands;
+package com.dennisheijmans.necessities.commands;
 
 import java.util.ArrayList;
 
