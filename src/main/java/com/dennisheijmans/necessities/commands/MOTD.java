@@ -11,7 +11,7 @@ public class MOTD implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if(sender.hasPermission("MiniEssentials.motd") || sender.hasPermission("MiniEssentials.*")) {
+		if(sender.hasPermission("Necessities.motd") || sender.hasPermission("Necessities.*")) {
 			int length = args.length;
 			if(length == 0) {
 				String message = fm.getConfigFile().getString("MOTD");

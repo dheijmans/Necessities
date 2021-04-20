@@ -27,8 +27,8 @@ public class Gamemodes implements CommandExecutor {
 				if (sender instanceof Player) {
 					Player player = (Player) sender;
 					if (args[0].equalsIgnoreCase("s")) {
-						if (!(player.hasPermission("MiniEssentials.gm.s")
-								|| player.hasPermission("MiniEssentials.*"))) {
+						if (!(player.hasPermission("Necessities.gm.s")
+								|| player.hasPermission("Necessities.*"))) {
 							Message.noPerm(player);
 							return true;
 						} else {
@@ -44,8 +44,8 @@ public class Gamemodes implements CommandExecutor {
 							}
 						}
 					} else if (args[0].equalsIgnoreCase("c")) {
-						if (!(player.hasPermission("MiniEssentials.gm.c")
-								|| player.hasPermission("MiniEssentials.*"))) {
+						if (!(player.hasPermission("Necessities.gm.c")
+								|| player.hasPermission("Necessities.*"))) {
 							Message.noPerm(player);
 							return true;
 						} else {
@@ -61,8 +61,8 @@ public class Gamemodes implements CommandExecutor {
 							}
 						}
 					} else if (args[0].equalsIgnoreCase("a")) {
-						if (!(player.hasPermission("MiniEssentials.gm.a")
-								|| player.hasPermission("MiniEssentials.*"))) {
+						if (!(player.hasPermission("Necessities.gm.a")
+								|| player.hasPermission("Necessities.*"))) {
 							Message.noPerm(player);
 							return true;
 						} else {
@@ -78,8 +78,8 @@ public class Gamemodes implements CommandExecutor {
 							}
 						}
 					} else if (args[0].equalsIgnoreCase("spec")) {
-						if (!(player.hasPermission("MiniEssentials.gm.spec")
-								|| player.hasPermission("MiniEssentials.*"))) {
+						if (!(player.hasPermission("Necessities.gm.spec")
+								|| player.hasPermission("Necessities.*"))) {
 							Message.noPerm(player);
 							return true;
 						} else {
@@ -109,8 +109,8 @@ public class Gamemodes implements CommandExecutor {
 				for(Player target : Bukkit.getServer().getOnlinePlayers()) {
 					if(target.getName().equalsIgnoreCase(args[1])) {
 						if (args[0].equalsIgnoreCase("s")) {
-							if (sender.hasPermission("MiniEssentials.gm.s.other")
-									|| sender.hasPermission("MiniEssentials.*")) {
+							if (sender.hasPermission("Necessities.gm.s.other")
+									|| sender.hasPermission("Necessities.*")) {
 								if (target.getGameMode().equals(GameMode.SURVIVAL)) {
 									sender.sendMessage(
 											Message.NECESSITIES + Color.colorize("&c" + target.getName() + " is already in Survival mode!"));
@@ -131,8 +131,8 @@ public class Gamemodes implements CommandExecutor {
 								break;
 							}
 						} else if (args[0].equalsIgnoreCase("c")) {
-							if (sender.hasPermission("MiniEssentials.gm.c.other")
-									|| sender.hasPermission("MiniEssentials.*")) {
+							if (sender.hasPermission("Necessities.gm.c.other")
+									|| sender.hasPermission("Necessities.*")) {
 								if (target.getGameMode().equals(GameMode.CREATIVE)) {
 									sender.sendMessage(
 											Message.NECESSITIES + Color.colorize("&c" + target.getName() + " is already in Creative mode!"));
@@ -153,8 +153,8 @@ public class Gamemodes implements CommandExecutor {
 								break;
 							}
 						} else if (args[0].equalsIgnoreCase("a")) {
-							if (sender.hasPermission("MiniEssentials.gm.a.other")
-									|| sender.hasPermission("MiniEssentials.*")) {
+							if (sender.hasPermission("Necessities.gm.a.other")
+									|| sender.hasPermission("Necessities.*")) {
 								if (target.getGameMode().equals(GameMode.ADVENTURE)) {
 									sender.sendMessage(
 											Message.NECESSITIES + Color.colorize("&c" + target.getName() + " is already in Adventure mode!"));
@@ -175,8 +175,8 @@ public class Gamemodes implements CommandExecutor {
 								break;
 							}
 						} else if (args[0].equalsIgnoreCase("spec")) {
-							if (sender.hasPermission("MiniEssentials.gm.spec.other")
-									|| sender.hasPermission("MiniEssentials.*")) {
+							if (sender.hasPermission("Necessities.gm.spec.other")
+									|| sender.hasPermission("Necessities.*")) {
 								if (target.getGameMode().equals(GameMode.SPECTATOR)) {
 									sender.sendMessage(
 											Message.NECESSITIES + Color.colorize("&c" + target.getName() + " is already in Spectator mode!"));

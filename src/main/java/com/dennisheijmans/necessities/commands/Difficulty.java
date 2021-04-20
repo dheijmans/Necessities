@@ -13,7 +13,7 @@ public class Difficulty implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if(sender.hasPermission("MiniEssentials.difficulty") || sender.hasPermission("MiniEssentials.*")) {
+		if(sender.hasPermission("Necessities.difficulty") || sender.hasPermission("Necessities.*")) {
 			int length = args.length;
 			if(length == 0) {
 				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /dif [p/e/n/h]!"));

@@ -21,11 +21,11 @@ public class Vanish implements CommandExecutor {
 
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
-			if (player.hasPermission("MiniEssentials.vanish") || player.hasPermission("MiniEssentials.*")) {
+			if (player.hasPermission("Necessities.vanish") || player.hasPermission("Necessities.*")) {
 				if (args.length == 0) {
 					if (!fm.getPlayerFile().getBoolean(player.getUniqueId().toString() + ".vanish")) {
 						for (Player other : Bukkit.getServer().getOnlinePlayers()) {
-							if (other.hasPermission("MiniEssentials.vanish.see") || other.hasPermission("MiniEssentials.*")) {
+							if (other.hasPermission("Necessities.vanish.see") || other.hasPermission("Necessities.*")) {
 								continue;
 							}
 							other.hidePlayer(plugin, player);
@@ -48,7 +48,7 @@ public class Vanish implements CommandExecutor {
 					}
 
 				} else if(args.length == 1){
-					if(player.hasPermission("MiniEssentials.vanish.check")) {
+					if(player.hasPermission("Necessities.vanish.check")) {
 						if(args[0].equalsIgnoreCase("check")) {
 							if(fm.getPlayerFile().getBoolean(player.getUniqueId().toString() + ".vanish")) {
 								player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou are vanished for other players!"));

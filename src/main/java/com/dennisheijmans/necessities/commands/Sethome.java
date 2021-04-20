@@ -14,7 +14,7 @@ public class Sethome implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(sender instanceof Player) {
 			Player player = (Player) sender;
-			if(player.hasPermission("MiniEssentials.sethome") || player.hasPermission("MiniEssentials.*")) {
+			if(player.hasPermission("Necessities.sethome") || player.hasPermission("Necessities.*")) {
 				int length = args.length;
 				if(length == 0) {
 					player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /sethome [name]"));

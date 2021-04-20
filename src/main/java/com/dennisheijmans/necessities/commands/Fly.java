@@ -17,7 +17,7 @@ public class Fly implements CommandExecutor {
 		if (length == 0) {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
-				if (player.hasPermission("MiniEssentials.fly") || player.hasPermission("MiniEssentials.*")) {
+				if (player.hasPermission("Necessities.fly") || player.hasPermission("Necessities.*")) {
 						if (player.getAllowFlight()) {
 							player.setAllowFlight(false);
 							player.setFlying(false);
@@ -42,7 +42,7 @@ public class Fly implements CommandExecutor {
 			boolean playerFound = false;
 			for (Player target : Bukkit.getOnlinePlayers()) {
 				if (target.getName().equalsIgnoreCase(args[0])) {
-					if (sender.hasPermission("MiniEssentials.fly.other") || sender.hasPermission("MiniEssentials.*")) {
+					if (sender.hasPermission("Necessities.fly.other") || sender.hasPermission("Necessities.*")) {
 						if (!target.getAllowFlight()) {
 							System.out.println("false");
 							target.setAllowFlight(true);

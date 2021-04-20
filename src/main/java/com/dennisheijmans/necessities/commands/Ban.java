@@ -31,7 +31,7 @@ public class Ban implements CommandExecutor{
 
 		}
 
-		if(sender.hasPermission("MiniEssentials.ban") || sender.hasPermission("MiniEssentials.*")) {
+		if(sender.hasPermission("Necessities.ban") || sender.hasPermission("Necessities.*")) {
 			int length = args.length;
 
 			if(length == 0) {

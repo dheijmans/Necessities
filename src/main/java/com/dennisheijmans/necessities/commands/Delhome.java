@@ -14,7 +14,7 @@ public class Delhome implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(sender instanceof Player) {
 			Player player = (Player) sender;
-			if(player.hasPermission("MiniEssentials.delhome") || player.hasPermission("MiniEssentials.*")) {
+			if(player.hasPermission("Necessities.delhome") || player.hasPermission("Necessities.*")) {
 				int length = args.length;
 				String pName = player.getUniqueId().toString();
 				if(length == 0) {

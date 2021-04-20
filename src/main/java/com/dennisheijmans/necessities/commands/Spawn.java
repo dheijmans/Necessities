@@ -20,7 +20,7 @@ public class Spawn implements CommandExecutor {
 			int length = args.length;
 			String spawnloc = "spawnloc";
 			if(cmd.getName().equalsIgnoreCase("setspawn")) {
-				if(player.hasPermission("MiniEssentials.setspawn") || player.hasPermission("MiniEssentials.*")) {
+				if(player.hasPermission("Necessities.setspawn") || player.hasPermission("Necessities.*")) {
 					if(length == 0) {
 						String world = player.getWorld().getName();
 						double x = player.getLocation().getX();
@@ -47,7 +47,7 @@ public class Spawn implements CommandExecutor {
 					return true;
 				}
 			} else if(cmd.getName().equalsIgnoreCase("spawn")){
-				if(player.hasPermission("MiniEssentials.spawn") || player.hasPermission("MiniEssentials.*")) {
+				if(player.hasPermission("Necessities.spawn") || player.hasPermission("Necessities.*")) {
 					if(length == 0) {
 						if(fm.getConfigFile().getConfigurationSection(spawnloc) == null) {
 							player.teleport(player.getWorld().getSpawnLocation());

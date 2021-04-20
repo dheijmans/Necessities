@@ -23,7 +23,7 @@ public class Kick implements CommandExecutor {
 
 		}
 
-		if(sender.hasPermission("MiniEssentials.kick") || sender.hasPermission("MiniEssentials.*")) {
+		if(sender.hasPermission("Necessities.kick") || sender.hasPermission("Necessities.*")) {
 			int length = args.length;
 
 			if(length == 0) {

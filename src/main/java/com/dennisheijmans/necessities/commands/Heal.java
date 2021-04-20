@@ -16,7 +16,7 @@ public class Heal implements CommandExecutor{
 		if(length == 0) {
 			if(sender instanceof Player) {
 				Player player = (Player) sender;
-				if(player.hasPermission("MiniEssentials.heal") || player.hasPermission("MiniEssentials.*")) {
+				if(player.hasPermission("Necessities.heal") || player.hasPermission("Necessities.*")) {
 					player.setHealth(20);
 					player.setFoodLevel(20);
 					player.setFireTicks(0);
@@ -34,7 +34,7 @@ public class Heal implements CommandExecutor{
 				return true;
 			}
 		} else if(length == 1) {
-			if(sender.hasPermission("MiniEssentials.heal.other") || sender.hasPermission("MiniEssentials.*")) {
+			if(sender.hasPermission("Necessities.heal.other") || sender.hasPermission("Necessities.*")) {
 				boolean playerFound = false;
 				for(Player target : Bukkit.getOnlinePlayers()) {
 					if(target.getName().equalsIgnoreCase(args[0])) {

@@ -11,7 +11,7 @@ public class Reload implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if(sender.hasPermission("MiniEssentials.reload") || sender.hasPermission("MiniEssentials.*")) {
+		if(sender.hasPermission("Necessities.reload") || sender.hasPermission("Necessities.*")) {
 			int length = args.length;
 			if(length <= 1) {
 				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /me reload [all/config/players/home/ban]"));
