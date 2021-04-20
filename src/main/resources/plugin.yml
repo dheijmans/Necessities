@@ -2,12 +2,127 @@ name: Necessities
 version: ${project.version}
 main: com.dennisheijmans.necessities.Necessities
 api-version: 1.16
+
 commands:
-  day:
-    description: Sets time to day
-  night:
-    description: Sets time to night
   time:
+    usage: /<time> <value>
     description: Sets time to custom value
   back:
     description: Teleports player back to place of death
+  gm:
+    usage: /<gm> <s/c/a/spec> <target>
+    description: Changes your gamemode!
+  heal:
+    usage: /<heal> <target>
+    description: Heals yourself or another person!
+  fly:
+    usage: /<fly> <target>
+    description: Let's you fly away!
+  sun:
+    usage: /<sun>
+    description: Makes the sun shine in your world!
+  rain:
+    usage: /<rain>
+    description: Makes it rain in your world!
+  storm:
+    usage: /<storm>
+    description: Awakens the storm in your world!
+  day:
+    usage: /<day>
+    description: Makes it day time in your world!
+  night:
+    usage: /<night>
+    description: Makes it night time in your world!
+  vanish:
+    usage: /<vanish>
+    description: Makes you dissapear!
+  kick:
+    usage: /<kick> <target> <reason>
+    description: Kicks a player from the server!
+  ban:
+    usage: /<ban> <target> <time> <reason>
+    description: Kicks a player from the server!
+  dif:
+    usage: /<dif> <p/e/n/h>
+    description: Changes the difficulty!
+  sethome:
+    usage: /<sethome> <name>
+    description: Sets your home!
+  delhome:
+    usage: /<delhome> <name>
+    description: Deletes your home!
+  home:
+    usage: /<home> <name>
+    description: Teleports you to your home!
+  spawn:
+    usage: /<spawn>
+    description: Teleports you to spawn!
+  setspawn:
+    usage: /<setspawn>
+    description: Sets the spawnpoint!
+  me:
+    usage: /<me> <reload> <all/config/players/home/ban>
+    description: Reloads the files!
+  motd:
+    usage: /<motd> <on/off/change> <motd>
+    description: Change MOTD settings!
+
+permissions:
+  Necessities.*:
+    description: A permission in Necessities!
+    Necessities.gm.s:
+      description: A permission in Necessities!
+    Necessities.gm.c:
+      description: A permission in Necessities!
+    Necessities.gm.a:
+      description: A permission in Necessities!
+    Necessities.gm.spec:
+      description: A permission in Necessities!
+    Necessities.gm.s.other:
+      description: A permission in Necessities!
+    Necessities.gm.c.other:
+      description: A permission in Necessities!
+    Necessities.gm.a.other:
+      description: A permission in Necessities!
+    Necessities.gm.spec.other:
+      description: A permission in Necessities!
+    Necessities.heal:
+      description: A permission in Necessities!
+    Necessities.heal.other:
+      description: A permission in Necessities!
+    Necessities.fly:
+      description: A permission in Necessities!
+    Necessities.fly.other:
+      description: A permission in Necessities!
+    Necessities.sun:
+      description: A permission in Necessities!
+    Necessities.rain:
+      description: A permission in Necessities!
+    Necessities.storm:
+      description: A permission in Necessities!
+    Necessities.day:
+      description: A permission in Necessities!
+    Necessities.night:
+      description: A permission in Necessities!
+    Necessities.vanish:
+      description: A permission in Necessities!
+    Necessities.vanish.see:
+      description: A permission in Necessities!
+    Necessities.reload:
+      description: A permission in Necessities!
+    Necessities.kick:
+      description: A permission in Necessities!
+    Necessities.ban:
+      description: A permission in Necessities!
+    Necessities.difficulty:
+      description: A permission in Necessities!
+    Necessities.sethome:
+      description: A permission in Necessities!
+    Necessities.delhome:
+      description: A permission in Necessities!
+    Necessities.home:
+      description: A permission in Necessities!
+    Necessities.setspawn:
+      description: A permission in Necessities!
+    Necessities.spawn:
+      description: A permission in Necessities!
