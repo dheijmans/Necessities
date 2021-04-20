@@ -35,7 +35,7 @@ BanMessage:
 # Server Spawn
 # You can change this value to true to make all the player teleport to spawn when they join
 # When this is set to false, only the players who first join the server will teleport to spawn
-tptospawn: true
+tptospawn: false
 
 # Spawn Location
 spawnloc:
