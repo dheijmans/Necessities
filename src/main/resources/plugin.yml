@@ -1,0 +1,13 @@
+name: Necessities
+version: ${project.version}
+main: com.dennisheijmans.necessities.Necessities
+api-version: 1.16
+commands:
+  day:
+    description: Sets time to day
+  night:
+    description: Sets time to night
+  time:
+    description: Sets time to custom value
+  back:
+    description: Teleports player back to place of death
