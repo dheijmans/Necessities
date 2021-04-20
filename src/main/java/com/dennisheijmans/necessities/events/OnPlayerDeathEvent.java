@@ -8,7 +8,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashMap;
 
-public class Death implements Listener {
+public class OnPlayerDeathEvent implements Listener {
 
     public HashMap<String, Location> deathLocations = new HashMap<>();
 

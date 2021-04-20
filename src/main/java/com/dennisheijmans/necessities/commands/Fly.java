@@ -1,13 +1,11 @@
 package com.dennisheijmans.necessities.commands;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class Fly implements CommandExecutor {
 
@@ -20,23 +18,23 @@ public class Fly implements CommandExecutor {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 				if (player.hasPermission("MiniEssentials.fly") || player.hasPermission("MiniEssentials.*")) {
-						if (player.getAllowFlight() == true) {
+						if (player.getAllowFlight()) {
 							player.setAllowFlight(false);
 							player.setFlying(false);
-							player.sendMessage(MiniEssentials.pre + Color.cc("&cYou are not flying anymore!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&cYou are not flying anymore!"));
 							return true;
 						} else {
 							player.setAllowFlight(true);
 							player.setFlying(true);
-							player.sendMessage(MiniEssentials.pre + Color.cc("&aYou are now flying!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou are now flying!"));
 							return true;
 						}
 				} else {
-					Messages.noPerm(player);
+					Message.noPerm(player);
 					return true;
 				}
 			} else {
-				Messages.noPlayer(sender);
+				Message.noPlayer(sender);
 				return true;
 			}
 
@@ -49,28 +47,28 @@ public class Fly implements CommandExecutor {
 							System.out.println("false");
 							target.setAllowFlight(true);
 							target.setFlying(true);
-							target.sendMessage(MiniEssentials.pre + Color.cc("&aYou are now flying!"));
-							sender.sendMessage(MiniEssentials.pre + Color.cc("&2" + target.getName() + "&a is now flying!"));
+							target.sendMessage(Message.NECESSITIES + Color.colorize("&aYou are now flying!"));
+							sender.sendMessage(Message.NECESSITIES + Color.colorize("&2" + target.getName() + "&a is now flying!"));
 							playerFound = true;
 							return true;
 						} else {
 							target.setAllowFlight(false);
 							target.setFlying(false);
-							target.sendMessage(MiniEssentials.pre + Color.cc("&cYou are not flying anymore!"));
-							sender.sendMessage(MiniEssentials.pre + Color.cc("&4" + target.getName() + "&c is not flying anymore!"));
+							target.sendMessage(Message.NECESSITIES + Color.colorize("&cYou are not flying anymore!"));
+							sender.sendMessage(Message.NECESSITIES + Color.colorize("&4" + target.getName() + "&c is not flying anymore!"));
 							playerFound = true;
 							return true;
 						}
 					}
 				}
 			}
-			if (playerFound == false) {
-				Messages.noTarget(args[0], sender);
+			if (!playerFound) {
+				Message.noTarget(args[0], sender);
 				return true;
 			}
 
 		} else {
-			sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /fly <target>"));
+			sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /fly <target>"));
 			return true;
 		}
 		return true;

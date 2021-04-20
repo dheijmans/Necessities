@@ -2,6 +2,7 @@ package com.dennisheijmans.necessities.commands;
 
 import java.util.ArrayList;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -9,9 +10,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class Home implements CommandExecutor {
 
@@ -27,17 +25,17 @@ public class Home implements CommandExecutor {
 				int length = args.length;
 				String pName = player.getUniqueId().toString();
 				if(length == 0) {
-					player.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /home [name]"));
-					player.sendMessage(MiniEssentials.pre + Color.cc("&3Your current homes are:"));
+					player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /home [name]"));
+					player.sendMessage(Message.NECESSITIES + Color.colorize("&3Your current homes are:"));
 					if(fm.getHomes().getConfigurationSection(pName) != null) {
 						for(String key : fm.getHomes().getConfigurationSection(pName).getKeys(false)) {
 							homes.add(key);
 						}
-						player.sendMessage(Color.cc("&b" + homes.toString().replace("[", "' ").replace(",", " ' '").replace("]", " '")));
+						player.sendMessage(Color.colorize("&b" + homes.toString().replace("[", "' ").replace(",", " ' '").replace("]", " '")));
 						homes.clear();
 						return true;
 					} else {
-						player.sendMessage(Color.cc("&b' '"));
+						player.sendMessage(Color.colorize("&b' '"));
 						return true;
 					}
 				} else if(length == 1) {
@@ -51,37 +49,35 @@ public class Home implements CommandExecutor {
 						Float pitch = (float) fm.getHomes().getDouble(dir + ".pitch");
 						Location loc = new Location(world, x, y, z, yaw, pitch);
 						player.teleport(loc);
-						player.sendMessage(MiniEssentials.pre + Color.cc("&aYou have been teleported to&2 " + args[0] + "&a!"));
+						player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou have been teleported to&2 " + args[0] + "&a!"));
 						return true;
 					} else {
-						player.sendMessage(MiniEssentials.pre + Color.cc("&cThe home&4 " + args[0] + "&c doesn't exist!"));
-						player.sendMessage(MiniEssentials.pre + Color.cc("&3Your current homes are:"));
+						player.sendMessage(Message.NECESSITIES + Color.colorize("&cThe home&4 " + args[0] + "&c doesn't exist!"));
+						player.sendMessage(Message.NECESSITIES + Color.colorize("&3Your current homes are:"));
 						for(String key : fm.getHomes().getConfigurationSection(pName).getKeys(false)) {
 							homes.add(key);
 						}
-						player.sendMessage(Color.cc("&b" + homes.toString().replace("[", "' ").replace(",", " ' '").replace("]", " '")));
+						player.sendMessage(Color.colorize("&b" + homes.toString().replace("[", "' ").replace(",", " ' '").replace("]", " '")));
 						homes.clear();
 						return true;
 					}
-				} else if(length > 1) {
-					player.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /home [name]"));
-					player.sendMessage(MiniEssentials.pre + Color.cc("&3Your current homes are:"));
+				} else {
+					player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /home [name]"));
+					player.sendMessage(Message.NECESSITIES + Color.colorize("&3Your current homes are:"));
 					for(String key : fm.getHomes().getConfigurationSection(pName).getKeys(false)) {
 						homes.add(key);
 					}
-					player.sendMessage(Color.cc("&b" + homes.toString().replace("[", "' ").replace(",", " ' '").replace("]", " '")));
+					player.sendMessage(Color.colorize("&b" + homes.toString().replace("[", "' ").replace(",", " ' '").replace("]", " '")));
 					homes.clear();
 					return true;
 				}
 			} else {
-				Messages.noPerm(player);
+				Message.noPerm(player);
 				return true;
 			}
 		} else {
-			Messages.noPlayer(sender);
+			Message.noPlayer(sender);
 			return true;
 		}
-		return true;
 	}
-
 }

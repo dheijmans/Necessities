@@ -24,7 +24,7 @@ public class Teleport implements CommandExecutor {
         }
         Player player = (Player) sender;
         if (command.getName().equalsIgnoreCase("back")) {
-            Location placeOfDeath = plugin.death.deathLocations.get(player.getName());
+            Location placeOfDeath = plugin.onPlayerDeathEvent.deathLocations.get(player.getName());
             if (placeOfDeath != null) {
                 player.teleport(placeOfDeath);
                 Message.teleport(player, "place of death");

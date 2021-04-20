@@ -1,10 +1,12 @@
-package me.Tjeerd.MiniEssentials.events;
+package com.dennisheijmans.necessities.events;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.dennisheijmans.necessities.Necessities;
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -13,13 +15,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
-
 public class OnPlayerJoinEvent implements Listener {
 
 	FileManager fm = FileManager.getInstance();
-	MiniEssentials me = MiniEssentials.getInstance();
+	Necessities me = Necessities.getInstance();
 
 	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss:SSS yyyy-MM-dd");
 
@@ -32,7 +31,7 @@ public class OnPlayerJoinEvent implements Listener {
 		if(fm.getConfigFile().getBoolean("motdenabled")) {
 			String MOTDMes = fm.getConfigFile().getString("MOTD");
 			MOTDMes = MOTDMes.replace("%player%", player.getName().toString());
-			player.sendMessage(MiniEssentials.pre + Color.cc(MOTDMes));
+			player.sendMessage(Message.NECESSITIES + Color.colorize(MOTDMes));
 		}
 
 		//Playerdata file
@@ -75,7 +74,7 @@ public class OnPlayerJoinEvent implements Listener {
 				String reason = "";
 				reason = fm.getBannedPlayers().getString(pName + ".reason");
 				e.setJoinMessage("");
-				player.kickPlayer(Color.cc(reason));
+				player.kickPlayer(Color.colorize(reason));
 			} else {	
 				fm.getBannedPlayers().set(pName + ".unbanTime", " ");
 				fm.getBannedPlayers().set(pName + ".reason", " ");
@@ -103,7 +102,7 @@ public class OnPlayerJoinEvent implements Listener {
 			String spawnloc = "spawnloc";
 			if(fm.getConfigFile().getConfigurationSection(spawnloc) == null) {
 				player.teleport(player.getWorld().getSpawnLocation());
-				player.sendMessage(MiniEssentials.pre + Color.cc("&aYou have been teleported to&2 spawn&a!"));
+				player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou have been teleported to&2 spawn&a!"));
 			} else {
 				World world = Bukkit.getWorld(fm.getConfigFile().getString(spawnloc + ".world"));
 				Double x = fm.getConfigFile().getDouble(spawnloc + ".x");
@@ -114,7 +113,7 @@ public class OnPlayerJoinEvent implements Listener {
 
 				Location loc = new Location(world, x, y, z, yaw, pitch);
 				player.teleport(loc);
-				player.sendMessage(MiniEssentials.pre + Color.cc("&aYou have been teleported to&2 spawn&a!"));
+				player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou have been teleported to&2 spawn&a!"));
 			}
 		}
 	}

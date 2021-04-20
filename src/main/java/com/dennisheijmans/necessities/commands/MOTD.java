@@ -1,11 +1,9 @@
 package com.dennisheijmans.necessities.commands;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class MOTD implements CommandExecutor {
 	
@@ -18,24 +16,24 @@ public class MOTD implements CommandExecutor {
 			if(length == 0) {
 				String message = fm.getConfigFile().getString("MOTD");
 				message = message.replaceAll("%player%", sender.getName());
-				sender.sendMessage(MiniEssentials.pre + Color.cc(message));
+				sender.sendMessage(Message.NECESSITIES + Color.colorize(message));
 				return true;
-			} else if(length >= 1) {
+			} else {
 				if(args[0].equalsIgnoreCase("on")) {
 					String motd = "motdenabled";
 					fm.getConfigFile().set(motd, true);
 					fm.saveConfigFile();
-					sender.sendMessage(MiniEssentials.pre + Color.cc("&2MOTD&a has been enabled!"));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&2MOTD&a has been enabled!"));
 					return true;
 				} else if(args[0].equalsIgnoreCase("off")) {
 					String motd = "motdenabled";
 					fm.getConfigFile().set(motd, false);
 					fm.saveConfigFile();
-					sender.sendMessage(MiniEssentials.pre + Color.cc("&4MOTD&c has been disabled!"));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&4MOTD&c has been disabled!"));
 					return true;
 				} else if(args[0].equalsIgnoreCase("change")) {
 					if(length == 1) {
-						sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /motd <on/off/change> <text>"));
+						sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /motd <on/off/change> <text>"));
 						return true;
 					}
 					String motd = "MOTD";
@@ -49,10 +47,10 @@ public class MOTD implements CommandExecutor {
 					message = str.toString();
 					fm.getConfigFile().set(motd, message);
 					fm.saveConfigFile();
-					sender.sendMessage(MiniEssentials.pre + Color.cc("&2MOTD&a has been set to: "+ message));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&2MOTD&a has been set to: "+ message));
 					return true;
 				} else {
-					sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /motd <on/off/change> <text>"));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /motd <on/off/change> <text>"));
 					return true;
 				}
 				

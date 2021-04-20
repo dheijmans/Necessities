@@ -1,5 +1,9 @@
 package com.dennisheijmans.necessities.commands;
 
+import com.dennisheijmans.necessities.Necessities;
+import com.dennisheijmans.necessities.tools.Color;
+import com.dennisheijmans.necessities.tools.FileManager;
+import com.dennisheijmans.necessities.tools.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,7 +13,7 @@ import org.bukkit.entity.Player;
 public class Vanish implements CommandExecutor {
 
 	FileManager fm = FileManager.getInstance();
-	private MiniEssentials plugin = MiniEssentials.getInstance();
+	private final Necessities plugin = Necessities.getInstance();
 
 
 	@Override
@@ -28,7 +32,7 @@ public class Vanish implements CommandExecutor {
 						}
 						fm.getPlayerFile().set(player.getUniqueId().toString() + ".vanish", Boolean.valueOf("true"));
 						fm.savePlayerFile();
-						player.sendMessage(MiniEssentials.pre + Color.cc("&aYou have been vanished!"));
+						player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou have been vanished!"));
 						return true;
 					}
 
@@ -39,7 +43,7 @@ public class Vanish implements CommandExecutor {
 						}
 						fm.getPlayerFile().set(player.getUniqueId().toString() + ".vanish", Boolean.valueOf("false"));
 						fm.savePlayerFile();
-						player.sendMessage(MiniEssentials.pre + Color.cc("&cYou have been un-vanished!"));
+						player.sendMessage(Message.NECESSITIES + Color.colorize("&cYou have been un-vanished!"));
 						return true;
 					}
 
@@ -47,30 +51,30 @@ public class Vanish implements CommandExecutor {
 					if(player.hasPermission("MiniEssentials.vanish.check")) {
 						if(args[0].equalsIgnoreCase("check")) {
 							if(fm.getPlayerFile().getBoolean(player.getUniqueId().toString() + ".vanish")) {
-								player.sendMessage(MiniEssentials.pre + Color.cc("&aYou are vanished for other players!"));
+								player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou are vanished for other players!"));
 								return true;
 							} else if(!fm.getPlayerFile().getBoolean(player.getUniqueId().toString() + ".vanish")) {
-								player.sendMessage(MiniEssentials.pre + Color.cc("&cYou are un-vanished for other players!"));
+								player.sendMessage(Message.NECESSITIES + Color.colorize("&cYou are un-vanished for other players!"));
 								return true;
 							}
 						} else {
-							player.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /vanish [check]!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /vanish [check]!"));
 							return true;
 						}
 					} else {
-						Messages.noPerm(player);
+						Message.noPerm(player);
 						return true;
 					}
-				} else if(args.length > 1) {
-					player.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /vanish [check]!"));
+				} else {
+					player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /vanish [check]!"));
 					return true;
 				}
 			} else {
-				Messages.noPerm(player);
+				Message.noPerm(player);
 				return true;
 			}
 		} else {
-			Messages.noPlayer(sender);
+			Message.noPlayer(sender);
 			return true;
 		}
 		return true;

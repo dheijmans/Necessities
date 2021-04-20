@@ -1,4 +1,4 @@
-package me.Tjeerd.MiniEssentials.utils;
+package com.dennisheijmans.necessities.tools;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;

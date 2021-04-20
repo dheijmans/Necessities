@@ -1,13 +1,11 @@
 package com.dennisheijmans.necessities.commands;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class Kick implements CommandExecutor {
 
@@ -29,7 +27,7 @@ public class Kick implements CommandExecutor {
 			int length = args.length;
 
 			if(length == 0) {
-				sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /kick [target] <reason>!"));
+				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /kick [target] <reason>!"));
 				return true;
 			} else if(length == 1) {
 				boolean playerFound = false;
@@ -43,19 +41,19 @@ public class Kick implements CommandExecutor {
 						}
 						reason = reason.replaceAll("%player%", sender.getName());
 						reason = reason.replaceAll("%reason%", fm.getConfigFile().getString("KickMessage.defaultreason"));
-						target.kickPlayer(Color.cc(reason));
-						sender.sendMessage(MiniEssentials.pre + Color.cc("&4" + target.getName() + "&a has been kicked succesfully!"));
+						target.kickPlayer(Color.colorize(reason));
+						sender.sendMessage(Message.NECESSITIES + Color.colorize("&4" + target.getName() + "&a has been kicked succesfully!"));
 						playerFound = true;
 						return true;
 					}
 				}
 
-				if(playerFound == false) {
-					Messages.noTarget(args[0], sender);
+				if(!playerFound) {
+					Message.noTarget(args[0], sender);
 					return true;
 				}
 
-			} else if(length > 1) {
+			} else {
 				boolean playerFound = false;
 				for(Player target : Bukkit.getServer().getOnlinePlayers()) {
 					if(target.getName().equalsIgnoreCase(args[0])) {
@@ -74,21 +72,21 @@ public class Kick implements CommandExecutor {
 						
 						reason = reason.replaceAll("%player%", sender.getName());
 						reason = reason.replaceAll("%reason%", str.toString());
-						target.kickPlayer(Color.cc(reason));
-						sender.sendMessage(MiniEssentials.pre + Color.cc("&4" + target.getName() + "&a has been kicked succesfully!"));
+						target.kickPlayer(Color.colorize(reason));
+						sender.sendMessage(Message.NECESSITIES + Color.colorize("&4" + target.getName() + "&a has been kicked succesfully!"));
 						playerFound = true;
 						return true;
 					}
 				}
 
-				if(playerFound == false) {
-					Messages.noTarget(args[0], sender);
+				if(!playerFound) {
+					Message.noTarget(args[0], sender);
 					return true;
 				}
 			}
 
 		} else {
-			Messages.noPerm(sender);
+			Message.noPerm(sender);
 			return true;
 		}
 		return true;

@@ -1,0 +1,47 @@
+# Config file of the Mini-Essentials plugin
+# Author: Tjeerd Roks
+
+# Enable MOTD?
+motdenabled: true
+
+# MOTD
+# You can use color codes!
+# %player% is replaced by the player name!
+MOTD: '&bWelcome to the server, %player%!'
+
+# Kick Message
+# You can use the color codes!
+# You can use %player% to say your name!
+# When adding new lines keep the name the same!
+# Line[number]: ''
+KickMessage:
+  defaultreason: 'You have been kicked!'
+  line1: '&bYou have been kicked from the server!'
+  line2: '&aBy: &2%player%'
+  line3: '&cFor: &4%reason%'
+
+
+# Ban Message
+# You can use color codes!
+# When adding new lines keep the name the same!
+# Line[number]: ''
+BanMessage:
+  defaultreason: 'The ban hammer has spoken!'
+  line1: '&bYou have been banned from the server!'
+  line2: '&aBy: &2%player%'
+  line3: '&cFor: &4%reason%'
+  line4: '&bYou can apply on our forums!'
+
+# Server Spawn
+# You can change this value to true to make all the player teleport to spawn when they join
+# When this is set to false, only the players who first join the server will teleport to spawn
+tptospawn: true
+
+# Spawn Location
+spawnloc:
+    world: world
+    x: 0
+    y: 0
+    z: 0
+    yaw: 0
+    pitch: 0

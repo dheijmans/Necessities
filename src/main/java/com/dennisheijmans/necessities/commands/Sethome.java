@@ -1,12 +1,10 @@
 package com.dennisheijmans.necessities.commands;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class Sethome implements CommandExecutor {
 
@@ -19,7 +17,7 @@ public class Sethome implements CommandExecutor {
 			if(player.hasPermission("MiniEssentials.sethome") || player.hasPermission("MiniEssentials.*")) {
 				int length = args.length;
 				if(length == 0) {
-					player.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /sethome [name]"));
+					player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /sethome [name]"));
 					return true;
 				} else if(length == 1) {
 					String pName = player.getUniqueId().toString();
@@ -42,10 +40,10 @@ public class Sethome implements CommandExecutor {
 							fm.getHomes().set(dir + ".yaw", yaw);
 							fm.getHomes().set(dir + ".pitch", pitch);
 							fm.saveHomes();
-							player.sendMessage(MiniEssentials.pre + Color.cc("&aYou home&2 " + args[0] + "&a has been set succesfully!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou home&2 " + args[0] + "&a has been set succesfully!"));
 							return true;
 						} else {
-							player.sendMessage(MiniEssentials.pre + Color.cc("&cThe home&4 " + args[0] + "&c already exists!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&cThe home&4 " + args[0] + "&c already exists!"));
 							return true;
 						}
 					} else {
@@ -58,25 +56,25 @@ public class Sethome implements CommandExecutor {
 							fm.getHomes().set(dir + ".yaw", yaw);
 							fm.getHomes().set(dir + ".pitch", pitch);
 							fm.saveHomes();
-							player.sendMessage(MiniEssentials.pre + Color.cc("&aYou home&2 " + args[0] + "&a has been set succesfully!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou home&2 " + args[0] + "&a has been set succesfully!"));
 							return true;
 						} else {
-							player.sendMessage(MiniEssentials.pre + Color.cc("&cThe home&4 " + args[0] + "&c already exists!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&cThe home&4 " + args[0] + "&c already exists!"));
 							return true;
 						}
 					}
 
 
 				} else if(length > 2) {
-					player.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /sethome [name]"));
+					player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /sethome [name]"));
 					return true;
 				}
 			} else {
-				Messages.noPerm(player);
+				Message.noPerm(player);
 				return true;
 			}
 		} else {
-			Messages.noPlayer(sender);
+			Message.noPlayer(sender);
 			return true;
 		}
 		return true;

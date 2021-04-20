@@ -1,18 +1,18 @@
-package me.Tjeerd.MiniEssentials.events;
+package com.dennisheijmans.necessities.events;
 
+import com.dennisheijmans.necessities.Necessities;
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class OnPlayerLeaveEvent implements Listener {
 
 	FileManager fm = FileManager.getInstance();
-	MiniEssentials plugin = MiniEssentials.getInstance();
+	Necessities plugin = Necessities.getInstance();
 
 	@EventHandler
 	public void OnPlayerQuitEvent(PlayerQuitEvent e) {

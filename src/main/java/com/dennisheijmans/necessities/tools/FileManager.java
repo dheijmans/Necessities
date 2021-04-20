@@ -1,4 +1,4 @@
-package me.Tjeerd.MiniEssentials.utils;
+package com.dennisheijmans.necessities.tools;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.Arrays;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import me.Tjeerd.MiniEssentials.MiniEssentials;
+import com.dennisheijmans.necessities.Necessities;
 
 public class FileManager {
 	
@@ -32,7 +32,7 @@ public class FileManager {
 	private File hfile;
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public void setup(MiniEssentials plugin) {
+	public void setup(Necessities plugin) {
 		
 		//Naming Files
 		cfile = new File(plugin.getDataFolder(), "config.yml");
@@ -76,10 +76,10 @@ public class FileManager {
 	public void saveConfigFile() {
 		try {
 			this.config.save(cfile);
-			ConfigUpdater.update(MiniEssentials.getInstance(), "config.yml", cfile, Arrays.asList("none"));
+			ConfigUpdater.update(Necessities.getInstance(), "config.yml", cfile, Arrays.asList("none"));
 			reloadConfigFile();
 		} catch (IOException e) {
-			Messages.noFileSave("config.yml"); 
+			Message.noFileSave("config.yml");
 		}
 	}
 	
@@ -97,7 +97,7 @@ public class FileManager {
 		try {
 			this.player.save(pfile);
 		} catch (IOException e) {
-			Messages.noFileSave("Playerdata.yml");
+			Message.noFileSave("Playerdata.yml");
 		}
 	}
 	
@@ -115,7 +115,7 @@ public class FileManager {
 		try {
 			this.ban.save(bfile);
 		} catch (IOException e) {
-			Messages.noFileSave("bannedPlayer.yml");
+			Message.noFileSave("bannedPlayer.yml");
 		}
 	}
 	
@@ -133,7 +133,7 @@ public class FileManager {
 			try {
 				this.homes.save(hfile);
 			} catch (IOException e) {
-				Messages.noFileSave("homes.yml");
+				Message.noFileSave("homes.yml");
 			}
 		}
 		

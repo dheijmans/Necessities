@@ -1,14 +1,12 @@
 package com.dennisheijmans.necessities.commands;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class Heal implements CommandExecutor{
 
@@ -25,14 +23,14 @@ public class Heal implements CommandExecutor{
 					for(PotionEffect effect : player.getActivePotionEffects()) {
 						player.removePotionEffect(effect.getType());
 					}
-					player.sendMessage(MiniEssentials.pre + Color.cc("&aYou have been healed succesfully"));
+					player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou have been healed succesfully"));
 					return true;
 				} else {
-					Messages.noPerm(player);
+					Message.noPerm(player);
 					return true;
 				}
 			} else {
-				Messages.noPlayer(sender);
+				Message.noPlayer(sender);
 				return true;
 			}
 		} else if(length == 1) {
@@ -47,24 +45,24 @@ public class Heal implements CommandExecutor{
 						for(PotionEffect effect : target.getActivePotionEffects()) {
 							target.removePotionEffect(effect.getType());
 						}
-						target.sendMessage(MiniEssentials.pre + Color.cc("&aYou have been healed by&2 " + sender.getName() + "!"));
-						sender.sendMessage(MiniEssentials.pre + Color.cc("&2" + target.getName() + "&a has been healed succesfully!"));
+						target.sendMessage(Message.NECESSITIES + Color.colorize("&aYou have been healed by&2 " + sender.getName() + "!"));
+						sender.sendMessage(Message.NECESSITIES + Color.colorize("&2" + target.getName() + "&a has been healed succesfully!"));
 						playerFound = true;
 						break;
 					}
 				}
 				
 				if(playerFound == false) {
-					Messages.noTarget(args[0], sender);
+					Message.noTarget(args[0], sender);
 					return true;
 				}
 				
 			} else {
-				Messages.noPerm(sender);
+				Message.noPerm(sender);
 				return true;
 			}
 		} else {
-			sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /heal <target>"));
+			sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /heal <target>"));
 			return true;
 		}
 		return true;

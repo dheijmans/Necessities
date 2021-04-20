@@ -1,5 +1,6 @@
 package com.dennisheijmans.necessities.commands;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -7,9 +8,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class Spawn implements CommandExecutor {
 
@@ -38,14 +36,14 @@ public class Spawn implements CommandExecutor {
 						fm.getConfigFile().set(spawnloc + ".yaw", yaw);
 						fm.getConfigFile().set(spawnloc + ".pitch", pitch);
 						fm.saveConfigFile();
-						player.sendMessage(MiniEssentials.pre + Color.cc("&2Spawn point&a has been set succesfully!"));
+						player.sendMessage(Message.NECESSITIES + Color.colorize("&2Spawn point&a has been set succesfully!"));
 						return true;
-					} else if(length > 0) {
-						player.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /setspawn"));
+					} else {
+						player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /setspawn"));
 						return true;
 					}
 				} else {
-					Messages.noPerm(player);
+					Message.noPerm(player);
 					return true;
 				}
 			} else if(cmd.getName().equalsIgnoreCase("spawn")){
@@ -53,7 +51,7 @@ public class Spawn implements CommandExecutor {
 					if(length == 0) {
 						if(fm.getConfigFile().getConfigurationSection(spawnloc) == null) {
 							player.teleport(player.getWorld().getSpawnLocation());
-							player.sendMessage(MiniEssentials.pre + Color.cc("&aYou have been teleported to&2 spawn&a!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou have been teleported to&2 spawn&a!"));
 							return true;
 						} else {
 							World world = Bukkit.getWorld(fm.getConfigFile().getString(spawnloc + ".world"));
@@ -65,21 +63,21 @@ public class Spawn implements CommandExecutor {
 
 							Location loc = new Location(world, x, y, z, yaw, pitch);
 							player.teleport(loc);
-							player.sendMessage(MiniEssentials.pre + Color.cc("&aYou have been teleported to&2 spawn&a!"));
+							player.sendMessage(Message.NECESSITIES + Color.colorize("&aYou have been teleported to&2 spawn&a!"));
 							return true;
 						}
-					} else if(length > 0) {
-						player.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /spawn"));
+					} else {
+						player.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /spawn"));
 						return true;
 					}
 				} else {
-					Messages.noPerm(player);
+					Message.noPerm(player);
 					return true;
 				}
 			}
 
 		} else {
-			Messages.noPlayer(sender);
+			Message.noPlayer(sender);
 			return true;
 		}
 		return true;

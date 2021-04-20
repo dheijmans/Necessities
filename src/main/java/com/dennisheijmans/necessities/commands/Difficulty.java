@@ -1,13 +1,11 @@
 package com.dennisheijmans.necessities.commands;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class Difficulty implements CommandExecutor {
 
@@ -18,7 +16,7 @@ public class Difficulty implements CommandExecutor {
 		if(sender.hasPermission("MiniEssentials.difficulty") || sender.hasPermission("MiniEssentials.*")) {
 			int length = args.length;
 			if(length == 0) {
-				sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /dif [p/e/n/h]!"));
+				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /dif [p/e/n/h]!"));
 				return true;
 			} else if(length == 1){
 				if(args[0].equalsIgnoreCase("p")) {
@@ -26,36 +24,36 @@ public class Difficulty implements CommandExecutor {
 						worlds.setDifficulty(org.bukkit.Difficulty.PEACEFUL);
 					}
 					fm.getConfigFile().set("difficulty", "peaceful");
-					sender.sendMessage(MiniEssentials.pre + Color.cc("&aThe difficulty has been set to &2Peaceful"));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&aThe difficulty has been set to &2Peaceful"));
 					return true;
 				} else if(args[0].equalsIgnoreCase("e")) {
 					for(World worlds : Bukkit.getWorlds()) {
 						worlds.setDifficulty(org.bukkit.Difficulty.EASY);
 					}
 					fm.getConfigFile().set("difficulty", "easy");
-					sender.sendMessage(MiniEssentials.pre + Color.cc("&aThe difficulty has been set to &2Easy"));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&aThe difficulty has been set to &2Easy"));
 					return true;
 				} else if(args[0].equalsIgnoreCase("n")) {
 					for(World worlds : Bukkit.getWorlds()) {
 						worlds.setDifficulty(org.bukkit.Difficulty.NORMAL);
 					}
 					fm.getConfigFile().set("difficulty", "normal");
-					sender.sendMessage(MiniEssentials.pre + Color.cc("&aThe difficulty has been set to &2Normal"));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&aThe difficulty has been set to &2Normal"));
 					return true;
 				} else if(args[0].equalsIgnoreCase("h")) {
 					for(World worlds : Bukkit.getWorlds()) {
 						worlds.setDifficulty(org.bukkit.Difficulty.HARD);
 					}
 					fm.getConfigFile().set("difficulty", "hard");
-					sender.sendMessage(MiniEssentials.pre + Color.cc("&aThe difficulty has been set to &2Hard"));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&aThe difficulty has been set to &2Hard"));
 					return true;
 				}
-			} else if(length > 1) {
-				sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /dif [p/e/n/h]!"));
+			} else {
+				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /dif [p/e/n/h]!"));
 				return true;
 			}
 		} else {
-			Messages.noPerm(sender);
+			Message.noPerm(sender);
 			return true;
 		}
 		return true;

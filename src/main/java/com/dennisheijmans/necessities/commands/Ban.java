@@ -4,14 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.dennisheijmans.necessities.tools.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import me.Tjeerd.MiniEssentials.MiniEssentials;
-import me.Tjeerd.MiniEssentials.utils.*;
 
 public class Ban implements CommandExecutor{
 	
@@ -37,17 +35,17 @@ public class Ban implements CommandExecutor{
 			int length = args.length;
 
 			if(length == 0) {
-				sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /ban [target] <time> <reason>!"));
+				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /ban [target] <time> <reason>!"));
 				return true;
 			} else if(length == 1) {
-				sender.sendMessage(MiniEssentials.pre + Color.cc("&cUse: /ban [target] <time> <reason>!"));
+				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /ban [target] <time> <reason>!"));
 				return true;
 			} else if(length == 2){
 				boolean playerFound = false;
 				for(Player target : Bukkit.getServer().getOnlinePlayers()) {
 					if(target.getName().equalsIgnoreCase(args[0])) {
 						if(fm.getBannedPlayers().getBoolean(target.getUniqueId().toString() + ".isBanned")) {
-							sender.sendMessage(MiniEssentials.pre + Color.cc("&Colorhis player is already banned!"));
+							sender.sendMessage(Message.NECESSITIES + Color.colorize("&Colorhis player is already banned!"));
 							return true;
 						} else {
 							String reason = "";
@@ -97,8 +95,8 @@ public class Ban implements CommandExecutor{
 								cal.add(Calendar.MILLISECOND, amount);
 								unbanDate = cal.getTime();
 							} else {
-								sender.sendMessage(MiniEssentials.pre + Color.cc("&cYou can use the following suffixes:"));
-								sender.sendMessage(MiniEssentials.pre + Color.cc("&6y(year), mon(month), d(day), h(hour), min(minute), s(second), ms(millisecond)"));
+								sender.sendMessage(Message.NECESSITIES + Color.colorize("&cYou can use the following suffixes:"));
+								sender.sendMessage(Message.NECESSITIES + Color.colorize("&6y(year), mon(month), d(day), h(hour), min(minute), s(second), ms(millisecond)"));
 								return true;
 							}
 							
@@ -111,25 +109,25 @@ public class Ban implements CommandExecutor{
 							fm.getBannedPlayers().set(target.getUniqueId().toString() + ".unbanTime", unbanTime);
 							fm.getBannedPlayers().set(target.getUniqueId().toString() + ".banCount", Integer.valueOf(fm.getBannedPlayers().getInt(target.getUniqueId().toString() + ".banCount") + 1));
 							fm.saveBannedPlayers();
-							target.kickPlayer(Color.cc(reason));
-							sender.sendMessage(MiniEssentials.pre + Color.cc("&4" + target.getName() + "&a has been banned succesfully!"));
+							target.kickPlayer(Color.colorize(reason));
+							sender.sendMessage(Message.NECESSITIES + Color.colorize("&4" + target.getName() + "&a has been banned succesfully!"));
 							playerFound = true;
 							return true;
 						}
 					}
 				}
 
-				if(playerFound == false) {
-					Messages.noTarget(args[0], sender);
+				if(!playerFound) {
+					Message.noTarget(args[0], sender);
 					return true;
 				}
 
-			} else if(length > 2) {
+			} else {
 				boolean playerFound = false;
 				for(Player target : Bukkit.getServer().getOnlinePlayers()) {
 					if(target.getName().equalsIgnoreCase(args[0])) {
 						if(fm.getBannedPlayers().getBoolean(target.getUniqueId().toString() + ".isBanned")) {
-							sender.sendMessage(MiniEssentials.pre + Color.cc("&Colorhis player is already banned!"));
+							sender.sendMessage(Message.NECESSITIES + Color.colorize("&Colorhis player is already banned!"));
 							return true;
 						} else {
 							String reason = "";
@@ -185,8 +183,8 @@ public class Ban implements CommandExecutor{
 								cal.add(Calendar.MILLISECOND, amount);
 								unbanDate = cal.getTime();
 							} else {
-								sender.sendMessage(MiniEssentials.pre + Color.cc("&cYou can use the following suffixes:"));
-								sender.sendMessage(MiniEssentials.pre + Color.cc("&6y(year), mon(month), d(day), h(hour), min(minute), s(second), ms(millisecond)"));
+								sender.sendMessage(Message.NECESSITIES + Color.colorize("&cYou can use the following suffixes:"));
+								sender.sendMessage(Message.NECESSITIES + Color.colorize("&6y(year), mon(month), d(day), h(hour), min(minute), s(second), ms(millisecond)"));
 								return true;
 							}
 							
@@ -199,22 +197,22 @@ public class Ban implements CommandExecutor{
 							fm.getBannedPlayers().set(target.getUniqueId().toString() + ".reason", reason);
 							fm.getBannedPlayers().set(target.getUniqueId().toString() + ".banCount", Integer.valueOf(fm.getBannedPlayers().getInt(target.getUniqueId().toString() + ".banCount") + 1));
 							fm.saveBannedPlayers();
-							target.kickPlayer(Color.cc(reason));
-							sender.sendMessage(MiniEssentials.pre + Color.cc("&4" + target.getName() + "&a has been banned succesfully!"));
+							target.kickPlayer(Color.colorize(reason));
+							sender.sendMessage(Message.NECESSITIES + Color.colorize("&4" + target.getName() + "&a has been banned succesfully!"));
 							playerFound = true;
 							return true;
 						}
 					}
 				}
 
-				if(playerFound == false) {
-					Messages.noTarget(args[0], sender);
+				if(!playerFound) {
+					Message.noTarget(args[0], sender);
 					return true;
 				}
 			}
 
 		} else {
-			Messages.noPerm(sender);
+			Message.noPerm(sender);
 			return true;
 		}
 		return true;
