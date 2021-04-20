@@ -43,7 +43,7 @@ public class Fly implements CommandExecutor {
 			for (Player target : Bukkit.getOnlinePlayers()) {
 				if (target.getName().equalsIgnoreCase(args[0])) {
 					if (sender.hasPermission("MiniEssentials.fly.other") || sender.hasPermission("MiniEssentials.*")) {
-						if (!target.getAllowFlight() == true) {
+						if (!target.getAllowFlight()) {
 							System.out.println("false");
 							target.setAllowFlight(true);
 							target.setFlying(true);

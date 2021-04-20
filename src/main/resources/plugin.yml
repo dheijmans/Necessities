@@ -8,6 +8,7 @@ commands:
     usage: /<time> <value>
     description: Sets time to custom value
   back:
+    usage: /<back>
     description: Teleports player back to place of death
   gm:
     usage: /<gm> <s/c/a/spec> <target>
