@@ -45,7 +45,7 @@ public class Ban implements CommandExecutor{
 				for(Player target : Bukkit.getServer().getOnlinePlayers()) {
 					if(target.getName().equalsIgnoreCase(args[0])) {
 						if(fm.getBannedPlayers().getBoolean(target.getUniqueId().toString() + ".isBanned")) {
-							sender.sendMessage(Message.NECESSITIES + Color.colorize("&Colorhis player is already banned!"));
+							sender.sendMessage(Message.NECESSITIES + Color.colorize("&cThis player is already banned!"));
 							return true;
 						} else {
 							String reason = "";

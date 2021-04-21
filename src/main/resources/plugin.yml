@@ -1,4 +1,5 @@
 name: Necessities
+authors: [Dennis Heijmans, Tjeerd Roks]
 version: ${project.version}
 main: com.dennisheijmans.necessities.Necessities
 api-version: 1.16

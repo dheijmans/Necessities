@@ -1,0 +1,14 @@
+# Block Shuffle File for Necessities
+# Authors: Dennis Heijmans, Tjeerd Roks
+# Here is all the data about the Block Shuffle game!
+
+# How long does a round go for?
+# s (seconds) / m (minutes)
+roundtime: 5m
+
+# What blocks can the game choose from?
+# Please visit the minecraft wiki to choose all block types
+# Use the given syntax to add / remove blocks!
+# minecraft:[blockname]
+blocktypes-allowed:
+  - minecraft:grass_block

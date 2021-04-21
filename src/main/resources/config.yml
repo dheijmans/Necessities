@@ -1,5 +1,5 @@
-# Config file of the Mini-Essentials plugin
-# Author: Tjeerd Roks
+# Config file of the Necessities plugin
+# Authors: Dennis Heijmans, Tjeerd Roks
 
 # Enable MOTD?
 motdenabled: true

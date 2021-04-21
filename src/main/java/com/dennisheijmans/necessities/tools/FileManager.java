@@ -11,7 +11,7 @@ import com.dennisheijmans.necessities.Necessities;
 
 public class FileManager {
 	
-	private static FileManager fm = new FileManager();
+	private static final FileManager fm = new FileManager();
 	
 	
 	public static FileManager getInstance() {
@@ -23,6 +23,7 @@ public class FileManager {
 	private FileConfiguration player;
 	private FileConfiguration ban;
 	private FileConfiguration homes;
+	private FileConfiguration blockshuffle;
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//File
@@ -30,6 +31,7 @@ public class FileManager {
 	private File pfile;
 	private File bfile;
 	private File hfile;
+	private File bsfile;
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void setup(Necessities plugin) {
@@ -39,6 +41,7 @@ public class FileManager {
 		pfile = new File(plugin.getDataFolder(), "Playerdata.yml");
 		bfile = new File(plugin.getDataFolder(), "bannedPlayers.yml");
 		hfile = new File(plugin.getDataFolder(), "homes.yml");
+		bsfile = new File(plugin.getDataFolder(), "blockshuffle.yml");
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		//Creating Files
@@ -57,6 +60,10 @@ public class FileManager {
 		if(!hfile.exists()) {
 			plugin.saveResource("homes.yml", false);
 		}
+
+		if(!bsfile.exists()) {
+			plugin.saveResource("blockshuffle.yml", false);
+		}
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		//YamlConfiguration
@@ -64,6 +71,7 @@ public class FileManager {
 		player = YamlConfiguration.loadConfiguration(this.pfile);
 		ban = YamlConfiguration.loadConfiguration(this.bfile);
 		homes = YamlConfiguration.loadConfiguration(this.hfile);
+		blockshuffle = YamlConfiguration.loadConfiguration(this.bsfile);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 	}
@@ -140,6 +148,26 @@ public class FileManager {
 		public void reloadHomes() {
 			this.homes = YamlConfiguration.loadConfiguration(this.hfile);
 		}
+
+	//------------------------------------------------------------------
+
+	public FileConfiguration getBlockshuffle() {
+		return this.blockshuffle;
+	}
+
+	public void saveBlockshuffle() {
+		try {
+			this.blockshuffle.save(bsfile);
+			ConfigUpdater.update(Necessities.getInstance(), "blockshuffle.yml", bsfile, Arrays.asList("none"));
+			reloadBlockshuffle();
+		} catch (IOException e) {
+			Message.noFileSave("blockshuffle.yml");
+		}
+	}
+
+	public void reloadBlockshuffle() {
+		this.blockshuffle = YamlConfiguration.loadConfiguration(this.bsfile);
+	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
