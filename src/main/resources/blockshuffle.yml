@@ -3,8 +3,8 @@
 # Here is all the data about the Block Shuffle game!
 
 # How long does a round go for?
-# s (seconds) / m (minutes)
-roundtime: 5m
+# min (minutes) / s (seconds)
+roundtime: 5min
 
 # What blocks can the game choose from?
 # Please visit the minecraft wiki to choose all block types

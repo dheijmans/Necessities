@@ -68,6 +68,10 @@ commands:
   motd:
     usage: /<motd> <on/off/change> <motd>
     description: Change MOTD settings!
+  blockshuffle:
+    aliases: bs
+    usage: /<blockshuffle> <start/stop/time> <roundtime>
+    description: Blockshuffle game settings!
 
 permissions:
   Necessities.*:
@@ -131,4 +135,6 @@ permissions:
     Necessities.spawn:
       description: A permission in Necessities!
     Necessities.back:
+      description: A permission in Necessities!
+    Necessities.blockshuffle:
       description: A permission in Necessities!

@@ -14,7 +14,7 @@ public class Reload implements CommandExecutor {
 		if(sender.hasPermission("Necessities.reload") || sender.hasPermission("Necessities.*")) {
 			int length = args.length;
 			if(length <= 1) {
-				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /me reload [all/config/players/home/ban]"));
+				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /me reload [all/config/players/home/ban/blockshuffle]"));
 				return true;
 			} else if(length == 2) {
 				if(args[1].equalsIgnoreCase("all")) {
@@ -22,6 +22,7 @@ public class Reload implements CommandExecutor {
 					fm.reloadConfigFile();
 					fm.reloadHomes();
 					fm.reloadPlayerFile();
+					fm.reloadBlockshuffle();
 					sender.sendMessage(Message.NECESSITIES + Color.colorize("&aAll files have been reloaded!"));
 					return true;
 				} else if(args[1].equalsIgnoreCase("config")) {
@@ -40,12 +41,16 @@ public class Reload implements CommandExecutor {
 					fm.reloadPlayerFile();
 					sender.sendMessage(Message.NECESSITIES + Color.colorize("&aplayerData.yml has been reloaded!"));
 					return true;
+				} else if(args[1].equalsIgnoreCase("blockshuffle")) {
+					fm.reloadBlockshuffle();
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&ablockshuffle.yml has been reloaded!"));
+					return true;
 				} else {
-					sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /me reload [all/config/players/home/ban]"));
+					sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /me reload [all/config/players/home/ban/blockshuffle]"));
 					return true;
 				}
 			} else {
-				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /me reload [all/config/players/home/ban]"));
+				sender.sendMessage(Message.NECESSITIES + Color.colorize("&cUse: /me reload [all/config/players/home/ban/blockshuffle]"));
 				return true;
 			}
 		} else {

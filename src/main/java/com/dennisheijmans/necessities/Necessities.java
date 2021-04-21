@@ -1,5 +1,6 @@
 package com.dennisheijmans.necessities;
 
+import com.dennisheijmans.necessities.blockshuffle.BlockShuffle;
 import com.dennisheijmans.necessities.commands.*;
 import com.dennisheijmans.necessities.events.*;
 import com.dennisheijmans.necessities.tools.*;
@@ -49,6 +50,7 @@ public final class Necessities extends JavaPlugin {
         this.getCommand("spawn").setExecutor(new Spawn());
         this.getCommand("setspawn").setExecutor(new Spawn());
         this.getCommand("motd").setExecutor(new MOTD());
+        this.getCommand("blockshuffle").setExecutor(new BlockShuffle());
 
         //register events
         getServer().getPluginManager().registerEvents(onPlayerDeathEvent, this);
