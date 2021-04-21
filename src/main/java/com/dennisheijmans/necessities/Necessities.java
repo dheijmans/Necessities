@@ -54,6 +54,7 @@ public final class Necessities extends JavaPlugin {
         getServer().getPluginManager().registerEvents(onPlayerDeathEvent, this);
         getServer().getPluginManager().registerEvents(new OnPlayerJoinEvent(), this);
         getServer().getPluginManager().registerEvents(new OnPlayerLeaveEvent(), this);
+        getServer().getPluginManager().registerEvents(new OnPlayerToggleSneakEvent(), this);
 
 
         Message.enabled(getServer().getConsoleSender());
