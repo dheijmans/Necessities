@@ -13,6 +13,8 @@ public class BlockShuffle implements CommandExecutor {
 
     FileManager fm = FileManager.getInstance();
 
+    public static boolean inBlockShuffle = false;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player) {
@@ -24,9 +26,11 @@ public class BlockShuffle implements CommandExecutor {
                     return true;
                 } else {
                     if(args[0].equalsIgnoreCase("start")) {
+                        inBlockShuffle = true;
                         player.sendMessage(Message.NECESSITIES + Color.colorize("&bGame has started!"));
                         return true;
                     } else if(args[0].equalsIgnoreCase("stop")) {
+                        inBlockShuffle = false;
                         player.sendMessage(Message.NECESSITIES + Color.colorize("&cGame has ended!"));
                         return true;
                     } else if(args[0].equalsIgnoreCase("time")) {
