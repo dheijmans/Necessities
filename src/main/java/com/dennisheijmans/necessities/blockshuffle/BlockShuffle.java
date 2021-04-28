@@ -1,19 +1,30 @@
 package com.dennisheijmans.necessities.blockshuffle;
 
+import com.dennisheijmans.necessities.Necessities;
 import com.dennisheijmans.necessities.tools.*;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+import org.bukkit.inventory.ItemStack;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class BlockShuffle implements CommandExecutor {
 
     FileManager fm = FileManager.getInstance();
+    Necessities plugin = Necessities.getInstance();
+
+    private HashMap<Player, ItemStack[]> inventories = new HashMap<Player, ItemStack[]>();
+    private final ArrayList<String> blocksAllowed = new ArrayList<>();
 
     public static boolean inBlockShuffle = false;
+    private final String inventory = "inventory-saves.";
+    private final String blocks = "blocks-allowed";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -27,10 +38,20 @@ public class BlockShuffle implements CommandExecutor {
                 } else {
                     if(args[0].equalsIgnoreCase("start")) {
                         inBlockShuffle = true;
-                        player.sendMessage(Message.NECESSITIES + Color.colorize("&bGame has started!"));
+
+                        for(String key : fm.getBlockshuffle().getKeys(false)) {
+                           blocksAllowed.add(fm.getBlockshuffle().getString(key));
+                        }
+
+                        inventories.put(player, player.getInventory().getContents());
+                        player.getInventory().clear();
+                        Material playerBlock = getRandomBlock();
+                        player.getInventory().setItemInMainHand(new ItemStack(playerBlock));
+                        player.sendMessage(Message.NECESSITIES + Color.colorize("&bGame has just started!"));
                         return true;
                     } else if(args[0].equalsIgnoreCase("stop")) {
                         inBlockShuffle = false;
+                        player.getInventory().setContents(inventories.get(player));
                         player.sendMessage(Message.NECESSITIES + Color.colorize("&cGame has ended!"));
                         return true;
                     } else if(args[0].equalsIgnoreCase("time")) {
@@ -62,5 +83,19 @@ public class BlockShuffle implements CommandExecutor {
             Message.noPlayer(sender);
             return true;
         }
+    }
+
+    private Material getRandomBlock() {
+
+        Material assignedBlock = null;
+        Random rand = new Random();
+
+//		Generate random number and get it from list
+        while(assignedBlock == null) {
+            int randomNumber = rand.nextInt(blocksAllowed.size());
+            Material m = Material.getMaterial(blocksAllowed.get(randomNumber));
+            assignedBlock = m;
+        }
+        return assignedBlock;
     }
 }
