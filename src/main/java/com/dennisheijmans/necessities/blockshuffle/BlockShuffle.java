@@ -18,9 +18,7 @@ public class BlockShuffle implements CommandExecutor {
 
     FileManager fm = FileManager.getInstance();
     Necessities plugin = Necessities.getInstance();
-
-    private HashMap<Player, ItemStack[]> inventories = new HashMap<Player, ItemStack[]>();
-    private final ArrayList<String> blocksAllowed = new ArrayList<>();
+    BlockShuffleGame bsg = new BlockShuffleGame();
 
     public static boolean inBlockShuffle = false;
     private final String inventory = "inventory-saves.";
@@ -38,20 +36,13 @@ public class BlockShuffle implements CommandExecutor {
                 } else {
                     if(args[0].equalsIgnoreCase("start")) {
                         inBlockShuffle = true;
-
-                        for(String key : fm.getBlockshuffle().getKeys(false)) {
-                           blocksAllowed.add(fm.getBlockshuffle().getString(key));
-                        }
-
-                        inventories.put(player, player.getInventory().getContents());
-                        player.getInventory().clear();
-                        Material playerBlock = getRandomBlock();
-                        player.getInventory().setItemInMainHand(new ItemStack(playerBlock));
+                        bsg.invSave();
+                        bsg.startGame();
                         player.sendMessage(Message.NECESSITIES + Color.colorize("&bGame has just started!"));
                         return true;
                     } else if(args[0].equalsIgnoreCase("stop")) {
                         inBlockShuffle = false;
-                        player.getInventory().setContents(inventories.get(player));
+                        bsg.stopGame();
                         player.sendMessage(Message.NECESSITIES + Color.colorize("&cGame has ended!"));
                         return true;
                     } else if(args[0].equalsIgnoreCase("time")) {
@@ -83,19 +74,5 @@ public class BlockShuffle implements CommandExecutor {
             Message.noPlayer(sender);
             return true;
         }
-    }
-
-    private Material getRandomBlock() {
-
-        Material assignedBlock = null;
-        Random rand = new Random();
-
-//		Generate random number and get it from list
-        while(assignedBlock == null) {
-            int randomNumber = rand.nextInt(blocksAllowed.size());
-            Material m = Material.getMaterial(blocksAllowed.get(randomNumber));
-            assignedBlock = m;
-        }
-        return assignedBlock;
     }
 }
