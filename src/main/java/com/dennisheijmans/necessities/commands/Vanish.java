@@ -25,9 +25,6 @@ public class Vanish implements CommandExecutor {
 				if (args.length == 0) {
 					if (!fm.getPlayerFile().getBoolean(player.getUniqueId().toString() + ".vanish")) {
 						for (Player other : Bukkit.getServer().getOnlinePlayers()) {
-							if (other.hasPermission("Necessities.vanish.see") || other.hasPermission("Necessities.*")) {
-								continue;
-							}
 							other.hidePlayer(plugin, player);
 						}
 						fm.getPlayerFile().set(player.getUniqueId().toString() + ".vanish", Boolean.valueOf("true"));
@@ -39,7 +36,6 @@ public class Vanish implements CommandExecutor {
 					if(fm.getPlayerFile().getBoolean(player.getUniqueId().toString() + ".vanish")) {
 						for(Player other : Bukkit.getServer().getOnlinePlayers()) {
 							other.showPlayer(plugin, player);
-
 						}
 						fm.getPlayerFile().set(player.getUniqueId().toString() + ".vanish", Boolean.valueOf("false"));
 						fm.savePlayerFile();
